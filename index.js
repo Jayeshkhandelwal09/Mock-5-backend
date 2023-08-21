@@ -3,7 +3,6 @@ const { connection } = require("./db");
 const { userRouter } = require("./routes/user.routes");
 const { appointmentRouter } = require("./routes/appointment.routes");
 const cors = require("cors")
-require("dotenv").config()
 
 const app = express();
 
@@ -12,11 +11,11 @@ app.use(cors())
 app.use("/users" , userRouter );
 app.use("/appointments" , appointmentRouter)
 
-app.listen(process.env.port, async () => {
+app.listen(8080, async () => {
   try {
     await connection;
     console.log("Server Connected to the DB");
-    console.log(`Server is running on port ${process.env.port}`);
+    console.log("Server is running on port 8080");
   } catch (error) {
     console.log(error);
     console.log("Something went Wrong");
